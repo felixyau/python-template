@@ -10,7 +10,7 @@ load_dotenv()
 app = Flask(__name__)
 app.config["REDIS_URL"] = "redis://127.0.0.1:6379"
 app.register_blueprint(sse, url_prefix='/stream')
-app.register_blueprint(tic_tac_toe, url_prefix="/tic_tac_toe")
+app.register_blueprint(tic_tac_toe, url_prefix="/tic-tac-toe")
 app.register_blueprint(test, url_prefix="/test")
 app.register_blueprint(hello, url_prefix="/hello")
 
