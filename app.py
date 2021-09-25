@@ -14,7 +14,6 @@ app.register_blueprint(tic_tac_toe, url_prefix="/tic-tac-toe")
 app.register_blueprint(test, url_prefix="/test")
 app.register_blueprint(hello, url_prefix="/hello")
 
-
 @app.route("/")
 def index():
     data = { "first": 1 }
