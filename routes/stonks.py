@@ -38,7 +38,7 @@ import json
 
 stonks = Blueprint("stonks", __name__)
 
-#function name cant be same as blueprint
+# function name cant be same as blueprint
 @stonks.route("/", methods=["POST"])
 def main():
     data = request.get_json()
@@ -47,7 +47,7 @@ def main():
         stonks = [[] for i in range(len(sample["timeline"]["2037"]))]
         stonks_d = {}
         stonks_d_reverse = {}
-        capital = sample["capital"]   
+        capital = sample["capital"]
         x = 0
         for i in sample["timeline"]["2037"]:
             stonks_d[str(x)] = i
@@ -68,7 +68,8 @@ def main():
         ind = 0
         for i in stonks:
             i.sort(key=lambda stonk: stonk[1])
-            highest.append((stonks_d[str(ind)], i[len(i)-1][0], i[len(i)-1][1]))
+            highest.append(
+                (stonks_d[str(ind)], i[len(i)-1][0], i[len(i)-1][1]))
             ind += 1
         print("highest:", type(highest[0][1]))
 
@@ -110,7 +111,7 @@ def main():
 
         for i in final:
             no = i[1][2] if money_left // (i[1][1] *
-                                        i[1][2]) > 1 else money_left // i[1][1]
+                                           i[1][2]) > 1 else money_left // i[1][1]
             print("moneyleft:", money_left)
             print(i[0] + ":", str(no))
             command.append("j-" + time + "-" + i[1][0])
@@ -121,10 +122,9 @@ def main():
         used_stocks.sort(key=lambda x: highest[stonks_d_reverse[x[0]]][1])
         print("used_stocks:", used_stocks)
         for i in used_stocks:
-            command.append("j-" + time + "-" + highest[stonks_d_reverse[i[0]]][1])
+            command.append("j-" + time + "-" +
+                           highest[stonks_d_reverse[i[0]]][1])
             command.append("s-" + i[0] + "-" + i[1])
         print("command:", command)
-        output.append(command)  
-    ot = dict(output)
-    return json.dumps(ot)
-
+        output.append(command)
+    return json.dumps(str(output))
