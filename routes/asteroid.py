@@ -37,7 +37,6 @@ def calScore(countSize):
         totalScore=(countSize*2)
     return (int)(totalScore)
 
-
 def checkTotalScore(string):
     trackFirst=0
     trackEnd=0
