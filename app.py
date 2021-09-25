@@ -23,3 +23,5 @@ def index():
 if __name__ == "__main__":
     app.run(debug=True) #debug true = change file will refresh the server
     #app.run(true)
+
+
