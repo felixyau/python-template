@@ -1,18 +1,25 @@
 from dotenv import load_dotenv
-from routes.encryption import encryption
+from routes.tic_tac_toe import tic_tac_toe
+from routes.test import test
+from routes.hello import hello
 from flask import Flask, jsonify
+from flask_sse import sse
 
 load_dotenv()
 
 app = Flask(__name__)
+app.config["REDIS_URL"] = "redis://127.0.0.1:6379"
+app.register_blueprint(sse, url_prefix='/stream')
+app.register_blueprint(tic_tac_toe, url_prefix="/tic_tac_toe")
+app.register_blueprint(test, url_prefix="/test")
+app.register_blueprint(hello, url_prefix="/hello")
+
 
 @app.route("/")
 def index():
     data = { "first": 1 }
     return jsonify(data)
 
-app.register_blueprint(encryption, url_prefix="/")
-
 if __name__ == "__main__":
-    app.run() #debug true = change file will refresh the server
+    app.run(debug=True) #debug true = change file will refresh the server
     #app.run(true)
