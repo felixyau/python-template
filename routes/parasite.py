@@ -7,7 +7,6 @@ import requests
 
 parasite = Blueprint("parasite", __name__)
 
-
 @parasite.route("/", methods=["POST"])
 def main():
     cases = request.get_json()  # api call
@@ -57,7 +56,7 @@ def main():
                 print(temp_out["p1"][list_dict[n]])
                 temp_out["p1"][list_dict[n]] = -1
         output.append(copy.deepcopy(temp_out))
-    return jsonify(str(output))
+    return jsonify(output)
 
 
 # Below lists detail all four possible movements from a cell
