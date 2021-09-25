@@ -1,37 +1,3 @@
-# parse json to form arrays and lengh  of energy according to stonks
-# arrays ranked according to stonk price of year
-# record the lowest price and year of the arrays
-# rank first elements of the arrays, subtract with capital, rank again with second element, subtract until used up
-# record the elements to that we buy
-# generate the jump buy ouput
-
-# data = [{
-#     "energy": 2,
-#     "capital": 500,
-#     "timeline": {
-#         "2037": {
-#             "Apple": {
-#                 "price": 100,
-#                 "qty": 10
-#             },
-#             # "ple": {
-#             #     "price": 60,
-#             #     "qty": 20
-#             # }
-#         },
-#         "2036": {
-#             "Apple": {
-#                 "price": 10,
-#                 "qty": 50
-#             },
-#             # "ple": {
-#             #     "price": 70,
-#             #     "qty": 10
-#             # }
-#         }
-#     }
-# }]
-
 import requests
 from flask import request, jsonify, Blueprint
 import json
@@ -127,4 +93,8 @@ def main():
             command.append("s-" + i[0] + "-" + i[1])
         print("command:", command)
         output.append(command)
-    return json.dumps(str(output))
+    response = stonks.response(
+        response=json.dumps(data),
+        mimetype='application/json'
+    )
+    return response
