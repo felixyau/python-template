@@ -58,7 +58,6 @@ def main():
         output.append(copy.deepcopy(temp_out))
     return jsonify(output)
 
-
 # Below lists detail all four possible movements from a cell
 row = [-1, 0, 0, 1]
 col = [0, -1, 1, 0]

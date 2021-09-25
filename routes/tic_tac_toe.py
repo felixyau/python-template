@@ -11,7 +11,7 @@ def handle():
     if request.method == "POST": 
         battleId = request.get_json()["battleId"]
         print("id:", battleId)
-        url = 'https://cis2021-arena.herokuapp.com//tic-tac-toe/start/' + battleId
+        url = 'https://cis2021-arena.herokuapp.com/tic-tac-toe/start/' + battleId
         # init(url)
         data = {
             "action": "putSymbol",
