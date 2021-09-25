@@ -3,6 +3,7 @@ from routes.tic_tac_toe import tic_tac_toe
 from routes.test import test
 from routes.hello import hello
 from routes.parasite import parasite
+from routes.asteroid import asteroid
 from flask import Flask, jsonify
 from flask_sse import sse
 
@@ -16,6 +17,7 @@ app.register_blueprint(test, url_prefix="/test")
 app.register_blueprint(hello, url_prefix="/hello")
 
 app.register_blueprint(parasite, url_prefix="/parasite")
+app.register_blueprint(asteroid, url_prefix="/asteroid")
 
 @app.route("/")
 def index():
