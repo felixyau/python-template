@@ -34,6 +34,7 @@
 
 import requests
 from flask import request, jsonify, Blueprint
+import json
 
 stonks = Blueprint("stonks", __name__)
 
@@ -123,6 +124,6 @@ def main():
             command.append("j-" + time + "-" + highest[stonks_d_reverse[i[0]]][1])
             command.append("s-" + i[0] + "-" + i[1])
         print("command:", command)
-        output.append(command)
-    return jsonify(output)
+        output.append(command)  
+    return json.dumps(output)
 
