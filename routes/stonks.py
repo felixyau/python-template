@@ -125,5 +125,6 @@ def main():
             command.append("s-" + i[0] + "-" + i[1])
         print("command:", command)
         output.append(command)  
-    return json.dumps(output)
+    ot = dict(output)
+    return json.dumps(ot)
 
