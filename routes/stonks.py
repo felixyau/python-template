@@ -1,5 +1,5 @@
 import requests
-from flask import request, jsonify, Blueprint
+from flask import request, jsonify, Blueprint, Response
 import json
 
 stonks = Blueprint("stonks", __name__)
@@ -93,8 +93,5 @@ def main():
             command.append("s-" + i[0] + "-" + i[1])
         print("command:", command)
         output.append(command)
-    response = stonks.response(
-        response=json.dumps(data),
-        mimetype='application/json'
-    )
-    return response
+
+    return Response(json.dumps(output), mimetype='application/json')
